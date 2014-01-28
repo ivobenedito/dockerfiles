@@ -11,8 +11,8 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" > /etc
 RUN apt-get update
 RUN apt-get -y install postgresql-9.3 postgresql-client-9.3 postgresql-contrib-9.3
 
-RUN echo 'host all all 0.0.0.0/0 md5' >> /etc/postgresql/9.3/main/pg_hba.conf
 RUN sed -i "s/#listen_addresses.*/listen_addresses = '*'/g" /etc/postgresql/9.3/main/postgresql.conf
+RUN echo 'host all all 0.0.0.0/0 md5' >> /etc/postgresql/9.3/main/pg_hba.conf
 
 ADD pg_start /usr/local/bin/pg_start
 RUN chmod +x /usr/local/bin/pg_start
