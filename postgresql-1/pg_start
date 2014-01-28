@@ -1,0 +1,6 @@
+#!/bin/bash
+
+service postgresql start
+su postgres -c "createuser -P -d -r -s docker"
+su postgres -c "createdb -O docker docker"
+tail -f /var/log/postgresql/postgresql-9.3-main.log
